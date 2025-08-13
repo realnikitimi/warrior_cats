@@ -1,7 +1,7 @@
 name: warrior_cats
 description: "A new Flutter project."
-publish_to: 'none'
-version: 0.1.0
+publish_to: "none"
+version: 0.1.1
 
 environment:
   sdk: ^3.8.1
@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.4.0
+  http_parser: ^4.1.2
   permission_handler: ^12.0.1
 
 dev_dependencies:

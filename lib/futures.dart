@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert' show jsonDecode, jsonEncode, utf8;
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:http_parser/http_parser.dart' show MediaType;
 import 'package:flutter/material.dart' show debugPrint;
@@ -77,11 +78,13 @@ class Futures {
     response.stream.transform(utf8.decoder).listen(onDataCallback);
   }
 
-  Future<String> getImage(String? id) async {
+  Future<Uint8List> getImage(String? id) async {
     final uri = Uri.parse('${endpoint.outputFile()}?id=$id');
-    debugPrint(uri.query);
     final response = await http.get(uri);
-    debugPrint(response.body);
-    return response.body;
+    final fileKey = jsonDecode(response.body)['key'];
+    final fileResponse = await http.get(
+      Uri.parse('https://utfs.io/f/$fileKey'),
+    );
+    return fileResponse.bodyBytes;
   }
 }

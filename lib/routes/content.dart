@@ -1,6 +1,5 @@
-import 'dart:convert' show base64Decode, jsonDecode, jsonEncode;
+import 'dart:convert' show jsonDecode;
 import 'dart:io';
-import 'dart:typed_data' show ByteBuffer, Uint8List;
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -88,8 +87,7 @@ class _ContentState extends State<Content> {
                   onDataCallback,
                 );
 
-                var response = await futures.getImage(id);
-                var uInt8List = base64Decode(jsonDecode(response)['buffer']);
+                var uInt8List = await futures.getImage(id);
                 var result = await FilePicker.platform.saveFile(
                   bytes: uInt8List,
                   type: FileType.image,
