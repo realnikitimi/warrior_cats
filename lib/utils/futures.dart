@@ -6,10 +6,10 @@ import 'dart:typed_data';
 import 'package:http_parser/http_parser.dart' show MediaType;
 import 'package:flutter/material.dart' show debugPrint;
 import 'package:http/http.dart' as http;
-import 'package:warrior_cats/buffer.dart';
-import 'package:warrior_cats/endpoints.dart';
+import 'package:warrior_cats/utils/types/buffer.dart';
+import 'package:warrior_cats/utils/endpoints.dart';
 
-final origin = 'https://automate-avatar-frame.onrender.com';
+const origin = 'https://automate-avatar-frame.onrender.com';
 
 class Futures {
   final endpoint = Endpoints.from(origin);
